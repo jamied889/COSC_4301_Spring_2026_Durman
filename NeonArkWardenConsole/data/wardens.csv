@@ -1,0 +1,6 @@
+warden_id,given_name,family_name,dimension_origin,identity_code,role_name,employment_status,clearance_level,hire_date
+1001,Arlen,Voss,Earth-Prime,NARK-ID-1001,Admin,Active,Level 5,2024-01-12
+1002,Mira,Sol,Earth-Prime,NARK-ID-1002,Field,Active,Level 3,2024-02-03
+1003,Kael,,Rift-7,NARK-ID-1003,Rift,Active,Level 4,2024-02-21
+1004,Jun,Park,Earth-Prime,NARK-ID-1004,Trainer,Inactive,Level 2,2024-03-04
+1005,Sable,Ren,Nocturne,NARK-ID-1005,Astral,Active,Level 4,2024-03-18

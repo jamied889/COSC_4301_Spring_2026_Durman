@@ -32,6 +32,9 @@ public class Creature {
     @Column(nullable = false, length = 30)
     private String condition;
 
+    @Column(nullable = false, length = 30)
+    private String status;
+
     @Column(columnDefinition = "TEXT")
     private String notes;
 

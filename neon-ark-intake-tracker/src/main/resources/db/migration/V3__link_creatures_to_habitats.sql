@@ -2,20 +2,20 @@
 ALTER TABLE creatures
     ADD COLUMN IF NOT EXISTS habitat_id BIGINT;
 
--- 2) Create a default habitat for existing creatures (needed before NOT NULL)
-INSERT INTO habitats (biome, location, min_temp_c, max_temp_c, created_at)
-VALUES ('FOREST', 'Default Habitat', 10, 25, NOW());
+-- 2) Create a default habitat for existing creatures
+INSERT INTO habitats (name, biome, zone, min_temp_c, max_temp_c)
+VALUES ('Forest Alpha', 'FOREST', 'Zone A', 10, 25);
 
 -- 3) Assign existing creatures to a habitat if they currently have NULL
 UPDATE creatures
-SET habitat_id = (SELECT id FROM habitats WHERE location = 'Default Habitat' ORDER BY id LIMIT 1)
+SET habitat_id = (SELECT id FROM habitats WHERE name = 'Forest Alpha' ORDER BY id LIMIT 1)
 WHERE habitat_id IS NULL;
 
--- 4) Make habitat_id required (matches optional=false and nullable=false)
+-- 4) Make habitat_id required
 ALTER TABLE creatures
     ALTER COLUMN habitat_id SET NOT NULL;
 
--- 5) Add the foreign key constraint (avoid duplicate constraint errors)
+-- 5) Add the foreign key constraint
 DO $$
 BEGIN
   IF NOT EXISTS (

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 // Simple CRUD + paging/sorting out of the box
 @Repository
 public interface CreatureRepository extends JpaRepository<Creature, Long> {
+    boolean existsByNameIgnoreCaseAndHabitatId(String name, Long habitatId);
 
     // No extra methods needed for basic "read" functionality
 

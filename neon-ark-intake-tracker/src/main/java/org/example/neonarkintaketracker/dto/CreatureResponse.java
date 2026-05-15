@@ -21,6 +21,8 @@ public class CreatureResponse {
     private String notes;
     private Long habitatId;
     private LocalDateTime createdAt;
+    private String status;
+    private String habitatName;
 
     public CreatureResponse() {
     }
@@ -88,4 +90,12 @@ public class CreatureResponse {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public String getStatus(){return status;}
+
+    public void setStatus(String status){this.status = status;}
+
+    public String getHabitatName(){return habitatName;}
+
+    public void setHabitatName(String habitatName){this.habitatName = habitatName;}
 }

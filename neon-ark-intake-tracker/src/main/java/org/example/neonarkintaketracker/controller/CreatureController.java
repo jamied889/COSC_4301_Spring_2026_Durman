@@ -7,6 +7,9 @@ import org.example.neonarkintaketracker.dto.CreatureResponse;
 import org.example.neonarkintaketracker.service.CreatureService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.example.neonarkintaketracker.dto.RenameCreatureRequest;
+import org.example.neonarkintaketracker.dto.RenameCreatureResponse;
+import org.example.neonarkintaketracker.dto.CreatureObservationsResponse;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,11 +22,11 @@ import java.util.Optional;
 @RequestMapping("/api/creatures")
 public class CreatureController {
 
-    private final CreatureService service;
+    private final CreatureService creatureService;
 
     // Constructor-based Dependency Injection (DI)
-    public CreatureController(CreatureService service) {
-        this.service = service;
+    public CreatureController(CreatureService creatureService) {
+        this.creatureService = creatureService;
     }
 
     /*
@@ -33,7 +36,7 @@ public class CreatureController {
     @GetMapping
     public ResponseEntity<List<CreatureResponse>> getAllCreatures() {
 
-        List<CreatureResponse> creatures = service.getAllCreatures();
+        List<CreatureResponse> creatures = creatureService.getAllCreatures();
 
         // Return 200 OK with JSON body
         return ResponseEntity.ok(creatures);
@@ -43,7 +46,7 @@ public class CreatureController {
     @GetMapping("/{id}")
     public ResponseEntity<CreatureResponse> getCreatureById(@PathVariable Long id) {
 
-        Optional<CreatureResponse> maybeCreature = service.getCreatureById(id);
+        Optional<CreatureResponse> maybeCreature = creatureService.getCreatureById(id);
 
         if (maybeCreature.isEmpty()) {
             // 404 when id does not exist
@@ -56,7 +59,39 @@ public class CreatureController {
 
     @PostMapping
     public ResponseEntity<CreatureResponse> create(@RequestBody CreatureRequest req) {
-        CreatureResponse created = service.createCreature(req);
+        CreatureResponse created = creatureService.createCreature(req);
         return ResponseEntity.status(201).body(created);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CreatureResponse> removeCreature(@PathVariable Long id)
+    {
+        CreatureResponse response;
+
+        response = creatureService.removeCreature(id);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/{id}/name")
+    public ResponseEntity<RenameCreatureResponse> renameCreature(
+            @PathVariable Long id,
+            @RequestBody RenameCreatureRequest request)
+    {
+        RenameCreatureResponse response;
+
+        response = creatureService.renameCreature(id, request);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}/observations")
+    public ResponseEntity<CreatureObservationsResponse> getCreatureObservations(@PathVariable Long id)
+    {
+        CreatureObservationsResponse response;
+
+        response = creatureService.getCreatureObservations(id);
+
+        return ResponseEntity.ok(response);
     }
 }

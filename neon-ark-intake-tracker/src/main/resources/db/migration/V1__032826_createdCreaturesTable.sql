@@ -6,7 +6,7 @@ CREATE TABLE creatures
     danger_level VARCHAR(30)                             NOT NULL,
     condition    VARCHAR(30)                             NOT NULL,
     notes        TEXT,
-    habitat_id   BIGINT                                  NOT NULL,
+    habitat_id   BIGINT                                         ,
     created_at   TIMESTAMP WITHOUT TIME ZONE             NOT NULL,
     CONSTRAINT pk_creatures PRIMARY KEY (id)
 );

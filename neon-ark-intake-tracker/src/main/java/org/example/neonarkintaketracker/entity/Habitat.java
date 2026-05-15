@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,11 +17,14 @@ public class Habitat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(nullable = false, length = 50)
     private String biome;
 
-    @Column(nullable = false, length = 120)
-    private String location;
+    @Column(nullable = false, length = 50)
+    private String zone;
 
     @Column(name = "min_temp_c", nullable = false)
     private Integer minTempC;

@@ -1,12 +1,12 @@
-INSERT INTO habitats (biome, location, min_temp_c, max_temp_c, created_at)
+INSERT INTO habitats (name, biome, zone, min_temp_c, max_temp_c)
 VALUES
-    ('FOREST', 'Sector A — Moss Caverns', 8, 18, NOW()),
-    ('DESERT', 'Sector B — Glass Dunes', 30, 48, NOW()),
-    ('RIVER', 'Sector C — Frost Hollow', -25, -5, NOW()),
-    ('RIVER', 'Sector D — Murk Basin', 20, 32, NOW()),
-    ('DESERT', 'Sector E — High Crags', -5, 10, NOW()),
-    ('RIVER', 'Sector F — Kelp Depths', 2, 12, NOW()),
-    ('FOREST', 'Sector G — Emerald Canopy', 24, 36, NOW()),
-    ('FOREST', 'Sector H — Wind Fields', 10, 22, NOW()),
-    ('DESERT', 'Sector I — Ash Spires', 35, 60, NOW()),
-    ('RIVER', 'Sector J — Crystal Burrows', 5, 14, NOW());
+    ('Moss Caverns', 'FOREST', 'Sector A', 8, 18),
+    ('Glass Dunes', 'DESERT', 'Sector B', 30, 48),
+    ('Frost Hollow', 'RIVER', 'Sector C', -25, -5),
+    ('Murk Basin', 'RIVER', 'Sector D', 20, 32),
+    ('High Crags', 'DESERT', 'Sector E', -5, 10),
+    ('Kelp Depths', 'RIVER', 'Sector F', 2, 12),
+    ('Emerald Canopy', 'FOREST', 'Sector G', 24, 36),
+    ('Wind Fields', 'FOREST', 'Sector H', 10, 22),
+    ('Ash Spires', 'DESERT', 'Sector I', 35, 60),
+    ('Crystal Burrows', 'RIVER', 'Sector J', 5, 14);
